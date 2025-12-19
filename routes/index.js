@@ -3,6 +3,7 @@ import { Router } from 'express';
 import users from "./users.js";
 import category from "./category.js";
 import expense from "./expense.js";
+import analytics from "./analytics.js";
 
 const router = Router();
 
@@ -15,6 +16,6 @@ router.get('/', (req, res, next) => {
 
 router.use('/users', users);
 router.use('/category', category);
-// router.use('/expenses', expense);
-
+router.use('/expenses', expense);
+router.use('/analytics', analytics);
 export default router;

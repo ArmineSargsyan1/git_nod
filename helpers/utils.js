@@ -1,26 +1,32 @@
-export const buildTaskQuery = ({ userId, search, completed, startDate, endDate }) => {
-  let query = `WHERE userId = ?`;
-  let params = [userId];
+export const buildExpenseFilters = (filters = {}) => {
+  let conditions = [];
+  let values = [];
 
-  if (search) {
-    query += ` AND (title LIKE ? OR description LIKE ?)`;
-    params = [...params, `%${search}%`, `%${search}%`];
+  if (filters.category) {
+    conditions = [...conditions, "category = ?"];
+    values = [...values, filters.category];
   }
 
-  if (completed !== null) {
-    query += ` AND completed = ?`;
-    params = [...params, completed ? 1 : 0];
+  if (filters.start_date) {
+    conditions = [...conditions, "date >= ?"];
+    values = [...values, filters.start_date];
   }
 
-  if (startDate) {
-    query += ` AND taskDate >= ?`;
-    params = [...params, startDate];
+  if (filters.end_date) {
+    conditions = [...conditions, "date <= ?"];
+    values = [...values, filters.end_date];
   }
 
-  if (endDate) {
-    query += ` AND taskDate <= ?`;
-    params = [...params, endDate];
-  }
+  const filterSql = conditions.length ? " AND " + conditions.join(" AND ") : "";
 
-  return { query, params };
+  return { filterSql, values };
+};
+
+
+export const getMonthName = (monthNumber) => {
+  const months = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December"
+  ];
+  return months[monthNumber - 1] || "";
 };

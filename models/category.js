@@ -36,12 +36,4 @@ export const createCategory = async (userId, name, color) => {
 };
 
 
-// export const createCategory = async (userId, name, color) => {
-//   const [result] = await db.query(
-//     "INSERT INTO categories (user_id, name, color) VALUES (?, ?, ?)",
-//     [userId, name, color || null]
-//   );
-//   return result.insertId;
-// };
-
 

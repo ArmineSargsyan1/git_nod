@@ -1,11 +1,12 @@
 import {Router} from 'express';
 import authorize from "../middlewares/authorize.js";
-import {validation} from "../middlewares/validation.js";
 import schema from "../schemas/categorySchema.js";
+import {validation} from "../middlewares/validation.js";
+
 
 import {createCategory, getUserCategories} from "../controllers/category.js";
-const router = Router();
 
+const router = Router();
 
 
 router.get('/',
@@ -19,7 +20,6 @@ router.post('/create',
   authorize,
   createCategory
 );
-
 
 
 export default router;

@@ -15,7 +15,7 @@ import db from "./clients/db.mysql.js";
   await db.query(`
    CREATE TABLE IF NOT EXISTS expenses (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
+    user_id CHAR(36) NOT NULL,  
     title VARCHAR(200) NOT NULL,
     amount DECIMAL(10, 2) NOT NULL,
     category VARCHAR(50) NOT NULL,
@@ -36,15 +36,10 @@ CREATE TABLE IF NOT EXISTS categories (
   UNIQUE KEY unique_user_category (user_id, name),
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
-
-
-
-
   `);
 
 
   console.log("Database");
-
 
 })();
 
