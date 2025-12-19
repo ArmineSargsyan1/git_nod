@@ -65,3 +65,5 @@ export const getMonthlySummary = async (user_id, year) => {
   const [rows] = await db.query(query, [user_id, selectedYear]);
   return { year: selectedYear, monthly_summary: rows };
 };
+
+
