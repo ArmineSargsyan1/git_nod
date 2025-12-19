@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="/stylesheets/registration.css">
+</head>
+<body>
+<div class="container">
+    <h2>Register</h2>
+
+    <div class="general-error"></div>
+
+    <form id="registration_form">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username">
+            <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="email">
+            <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password">
+            <span class="error-message"></span>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/javascripts/registration.js"></script>
+</body>
+</html>
